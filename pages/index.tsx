@@ -1,18 +1,15 @@
-import Link from "next/link";
-import { GetServerSideProps, NextPage } from "next";
-import { redirect } from "next/dist/server/api-utils";
+import { NextPage } from "next";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-const Home: NextPage<{ allPostsData: Array<any> }> = ({ allPostsData }) => {
-  return null
+const Home: NextPage = () => {
+  const { replace } = useRouter();
+
+  useEffect(() => {
+    replace("/posts");
+  }, [replace]);
+
+  return null;
 };
-
-export const getStaticProps = () => {
-  return {
-    props: {},
-    redirect: {
-      destination: '/posts'
-    }
-  }
-}
 
 export default Home;
